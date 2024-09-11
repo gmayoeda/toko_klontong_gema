@@ -8,7 +8,7 @@ final class ProductLoading extends ProductState {}
 
 final class ProductGetSucess extends ProductState {
   final List<ProductCrudModel> result;
-  ProductGetSucess({required this.result});
+  ProductGetSucess(this.result);
 }
 
 final class ProductCreatedSucess extends ProductState {}

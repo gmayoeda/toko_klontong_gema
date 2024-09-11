@@ -6,13 +6,10 @@ class CartButton extends StatelessWidget {
   const CartButton({
     super.key,
     required this.price,
-    this.title = "Buy Now",
-    this.subTitle = "Price",
     required this.press,
   });
 
   final int price;
-  final String title, subTitle;
   final VoidCallback press;
 
   @override
@@ -42,19 +39,18 @@ class CartButton extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "$price".rp(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .copyWith(color: Colors.white),
-                          ),
-                          Text(
-                            subTitle,
-                            style: const TextStyle(
+                          const Text(
+                            'Price',
+                            style: TextStyle(
+                                fontSize: 14,
                                 color: Colors.white54,
                                 fontWeight: FontWeight.w500),
-                          )
+                          ),
+                          Text(
+                            "$price".rp(),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 18),
+                          ),
                         ],
                       ),
                     ),
@@ -66,7 +62,7 @@ class CartButton extends StatelessWidget {
                       height: double.infinity,
                       color: Colors.black.withOpacity(0.15),
                       child: Text(
-                        title,
+                        'Buy Now',
                         style: Theme.of(context)
                             .textTheme
                             .titleSmall!

@@ -20,9 +20,7 @@ class ProductDetailsPage extends StatelessWidget {
         press: () {},
       ),
       body: BlocConsumer<ProductBloc, ProductState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return SafeArea(
             child: Stack(
@@ -64,11 +62,16 @@ class ProductDetailsPage extends StatelessWidget {
                             const Spacer(),
                             SvgPicture.asset("assets/icons/Star_filled.svg"),
                             const SizedBox(width: 16 / 4),
-                            Text(
-                              "4.3 ",
-                              style: Theme.of(context).textTheme.bodyLarge,
-                            ),
-                            const Text("(167 Reviews)"),
+                            const Text("4.3  ",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14)),
+                            const Text("(167 Reviews)",
+                                style: TextStyle(
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14)),
                           ],
                         ),
                         const SizedBox(height: 20.0),
@@ -89,13 +92,18 @@ class ProductDetailsPage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: mainColors,
+                  left: 10,
+                  top: 10,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white60,
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: mainColors,
+                      ),
                     ),
                   ),
                 ),

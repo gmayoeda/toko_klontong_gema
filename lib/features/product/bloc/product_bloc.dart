@@ -9,12 +9,28 @@ part 'product_state.dart';
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   ProductBloc() : super(ProductInitial()) {
     ProductService service = ProductService();
+    List<ProductCrudModel> listProduct = [];
+
     on<GetProductEvent>((event, emit) async {
       try {
         emit(ProductLoading());
         await service.requestProduct().then((resResult) async {
-          emit(ProductGetSucess(result: resResult));
+          listProduct = resResult;
+          emit(ProductGetSucess(listProduct));
         });
+      } catch (e) {
+        emit(ProductFailed(e.toString()));
+      }
+    });
+
+    on<SearchProductEvent>((event, emit) async {
+      try {
+        emit(ProductLoading());
+        final filteredItems = listProduct
+            .where((item) => item.name!.toLowerCase().contains(event.itemName))
+            .toList();
+
+        emit(ProductGetSucess(filteredItems));
       } catch (e) {
         emit(ProductFailed(e.toString()));
       }
