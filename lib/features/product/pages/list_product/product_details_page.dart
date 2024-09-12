@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:toko_klontong_gema/features/product/bloc/product_bloc.dart';
 import 'package:toko_klontong_gema/features/product/domain/models/product_crud_model.dart';
-import 'package:toko_klontong_gema/features/product/pages/items/cart_button.dart';
-import 'package:toko_klontong_gema/features/product/pages/items/product_availability_tag.dart';
+import 'package:toko_klontong_gema/features/product/pages/list_product/items/cart_button.dart';
+import 'package:toko_klontong_gema/features/product/pages/list_product/items/product_availability_tag.dart';
 import 'package:toko_klontong_gema/utils/config/theme/themes.dart';
 
 class ProductDetailsPage extends StatelessWidget {
@@ -81,8 +81,7 @@ class ProductDetailsPage extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18)),
                         const SizedBox(height: 8.0),
-                        Text(
-                            "${data.description!}asdasd asdasdasdsa asdasdasda dasdasdasdsa dasd asdasdasd asdasdasda asdas",
+                        Text(data.description!,
                             style: const TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.normal,

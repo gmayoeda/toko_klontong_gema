@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toko_klontong_gema/features/product/pages/items/network_image_with_loader.dart';
+import 'package:toko_klontong_gema/features/product/pages/list_product/items/network_image_with_loader.dart';
 import 'package:toko_klontong_gema/utils/commons/helper/methods.dart';
 
 class ProductCard extends StatelessWidget {

@@ -35,5 +35,20 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         emit(ProductFailed(e.toString()));
       }
     });
+
+    on<CreateProductEvent>((event, emit) async {
+      try {
+        emit(ProductLoading());
+        await service.requestCreateProduct(event.data).then((value) {
+          if (value == true) {
+            emit(ProductCreatedSucess());
+          } else {
+            emit(ProductFailed('Failed to submit product!'));
+          }
+        });
+      } catch (e) {
+        emit(ProductFailed(e.toString()));
+      }
+    });
   }
 }

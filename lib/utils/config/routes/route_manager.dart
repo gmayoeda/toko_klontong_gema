@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:toko_klontong_gema/features/auth/pages/login_page.dart';
 import 'package:toko_klontong_gema/features/product/domain/models/product_crud_model.dart';
+import 'package:toko_klontong_gema/features/product/pages/add_product/add_product_page.dart';
 import 'package:toko_klontong_gema/features/product/pages/entry_point.dart';
-import 'package:toko_klontong_gema/features/product/pages/product_details_page.dart';
+import 'package:toko_klontong_gema/features/product/pages/list_product/product_details_page.dart';
 import 'package:toko_klontong_gema/features/splash/pages/splashscreen.dart';
 
 class RouteManager {
@@ -10,6 +11,7 @@ class RouteManager {
   static const String login = '/login';
   static const String main = '/main';
   static const String productDetails = '/productDetails';
+  static const String addProduct = '/addProduct';
 
   static Route<dynamic> generateRoute(RouteSettings routeSettings) {
     final Object? args = routeSettings.arguments;
@@ -23,6 +25,10 @@ class RouteManager {
 
       case main:
         return MaterialPageRoute(builder: ((context) => const EntryPoint()));
+
+      case addProduct:
+        return MaterialPageRoute(
+            builder: ((context) => const AddProductPage()));
 
       case productDetails:
         if (args is ProductCrudModel) {

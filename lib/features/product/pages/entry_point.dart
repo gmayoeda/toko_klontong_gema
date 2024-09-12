@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:toko_klontong_gema/features/product/pages/product_page.dart';
 import 'package:animations/animations.dart';
+import 'package:toko_klontong_gema/features/auth/bloc/auth_bloc.dart';
+import 'package:toko_klontong_gema/features/product/pages/list_product/product_page.dart';
+import 'package:toko_klontong_gema/utils/config/routes/route_manager.dart';
 import 'package:toko_klontong_gema/utils/config/theme/themes.dart';
 
 class EntryPoint extends StatefulWidget {
@@ -14,7 +17,6 @@ class EntryPoint extends StatefulWidget {
 class _EntryPointState extends State<EntryPoint> {
   final List _pages = const [
     MainPage(),
-    SizedBox(),
     SizedBox(),
   ];
   int _currentIndex = 0;
@@ -58,11 +60,23 @@ class _EntryPointState extends State<EntryPoint> {
         actions: [
           IconButton(
             onPressed: () {
-              // Navigator.pushNamed(context, notificationsScreenRoute);
+              Navigator.pushNamed(context, RouteManager.addProduct);
             },
             icon: SvgPicture.asset(
               "assets/icons/add-category-icon.svg",
               height: 20,
+              colorFilter: ColorFilter.mode(
+                  Theme.of(context).textTheme.bodyLarge!.color!,
+                  BlendMode.srcIn),
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              context.read<AuthBloc>().add(AuthLogout());
+            },
+            icon: SvgPicture.asset(
+              "assets/icons/signout-svgrepo-com.svg",
+              height: 26,
               colorFilter: ColorFilter.mode(
                   Theme.of(context).textTheme.bodyLarge!.color!,
                   BlendMode.srcIn),
@@ -116,12 +130,6 @@ class _EntryPointState extends State<EntryPoint> {
               activeIcon:
                   svgIcon("assets/icons/bag-icon.svg", color: mainColors),
               label: "Cart",
-            ),
-            BottomNavigationBarItem(
-              icon: svgIcon("assets/icons/setting-line-icon.svg"),
-              activeIcon: svgIcon("assets/icons/setting-line-icon.svg",
-                  color: mainColors),
-              label: "Config",
             ),
           ],
         ),
